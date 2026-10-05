@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 160">
+  <filter id="grain">
+    <feTurbulence type="fractalNoise" baseFrequency=".82" numOctaves="3" stitchTiles="stitch"/>
+    <feColorMatrix values="1 0 0 0 .7 0 1 0 0 .7 0 0 1 0 .7 0 0 0 .22 0"/>
+  </filter>
+  <path filter="url(#grain)" opacity=".32" d="M0 0h160v160H0z"/>
+</svg>

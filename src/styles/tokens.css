@@ -1,0 +1,39 @@
+:root {
+  --color-background: #101a2b;
+  --color-surface: #17283b;
+  --color-surface-elevated: #20364b;
+  --color-text: #f4f4f6;
+  --color-text-muted: #b9c8d9;
+  --color-primary: #fffaf0;
+  --color-accent: #e9c982;
+  --color-accent-strong: #ffe7a6;
+  --color-secondary: #9fd3e8;
+  --color-violet: #c6c4e2;
+  --color-border: rgba(196, 219, 235, 0.2);
+  --color-background-sky: #152b40;
+  --color-background-mid: #17273c;
+  --color-dust-bright: rgba(255, 237, 194, 0.65);
+  --color-dust-soft: rgba(177, 222, 245, 0.35);
+  --glow-soft-sky: rgba(127, 194, 221, 0.24);
+  --glow-gold-atmosphere: rgba(231, 201, 130, 0.13);
+  --glow-distant-blue: rgba(89, 126, 174, 0.17);
+  --glow-ray-soft: rgba(135, 200, 232, 0.045);
+  --glow-mist: rgba(176, 224, 244, 0.09);
+  --selection-background: rgba(245, 190, 95, 0.25);
+  --selection-foreground: #fff7ed;
+
+  --space-xs: 0.5rem;
+  --space-sm: 0.75rem;
+  --space-md: 1rem;
+  --space-lg: 1.5rem;
+  --space-xl: 2rem;
+  --space-2xl: 3rem;
+
+  --radius-sm: 0.75rem;
+  --radius-md: 1.25rem;
+  --radius-lg: 1.75rem;
+
+  --duration-fast: 150ms;
+  --duration-normal: 250ms;
+  --duration-slow: 500ms;
+}

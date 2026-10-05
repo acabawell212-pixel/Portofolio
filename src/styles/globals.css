@@ -1,0 +1,293 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background-color: var(--color-background);
+  color: var(--color-text);
+  font-family: Inter, 'Segoe UI', sans-serif;
+  letter-spacing: 0.01em;
+}
+
+#root {
+  min-height: 100vh;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+img,
+svg,
+canvas {
+  display: block;
+  max-width: 100%;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  text-shadow: 0 2px 26px rgba(144, 198, 228, 0.12);
+}
+
+::selection {
+  background: var(--selection-background);
+  color: var(--selection-foreground);
+}
+
+@keyframes floatParticle {
+  0% {
+    opacity: 0.15;
+    transform: translate3d(0, 0, 0) scale(0.8);
+  }
+  50% {
+    opacity: 0.9;
+    transform: translate3d(10px, -18px, 0) scale(1.2);
+  }
+  100% {
+    opacity: 0.15;
+    transform: translate3d(-10px, -34px, 0) scale(0.8);
+  }
+}
+
+.ambient-haze {
+  background:
+    radial-gradient(ellipse at 18% 22%, rgba(111, 181, 215, 0.055), transparent 27%),
+    radial-gradient(ellipse at 82% 34%, rgba(225, 191, 125, 0.04), transparent 24%),
+    radial-gradient(ellipse at 68% 82%, rgba(82, 139, 184, 0.05), transparent 30%);
+  background-size: 150% 150%;
+  animation: haze-drift 52s ease-in-out infinite alternate;
+  will-change: background-position;
+  transform: translateZ(-180px) scale(1.2);
+}
+
+.ambient-atmosphere-depth {
+  transform: translateZ(-220px) scale(1.24);
+}
+
+.ambient-paper-drift {
+  animation: paper-drift 96s ease-in-out infinite alternate;
+  will-change: translate;
+  transform: translateZ(-100px) scale(1.12);
+}
+
+.ambient-glow-drift {
+  animation: glow-drift 36s ease-in-out infinite alternate;
+  will-change: translate, opacity;
+}
+
+.ambient-glow-drift-reverse {
+  animation: glow-drift-reverse 44s ease-in-out infinite alternate;
+  will-change: translate, opacity;
+}
+
+.ambient-glow-drift-slow {
+  animation: glow-drift-slow 56s ease-in-out infinite alternate;
+  will-change: translate, opacity;
+}
+
+.ambient-pattern-drift {
+  animation: pattern-drift 70s linear infinite alternate;
+  will-change: translate;
+  transform: translateZ(-55px) scale(1.06);
+}
+
+.ambient-depth-scene {
+  perspective: 1100px;
+  perspective-origin: 50% 40%;
+  transform-style: preserve-3d;
+}
+
+.ambient-glow-drift,
+.ambient-glow-drift-reverse,
+.ambient-glow-drift-slow {
+  transform-style: preserve-3d;
+}
+
+.ambient-particle-field {
+  perspective: 900px;
+  transform-style: preserve-3d;
+}
+
+.ui-depth-card {
+  perspective: 1000px;
+  transform-style: preserve-3d;
+  transition: transform 350ms cubic-bezier(0.2, 0.7, 0.2, 1), box-shadow 350ms ease, border-color 250ms ease;
+}
+
+.ui-depth-card-texture {
+  transform: translateZ(-4px) scale(1.02);
+}
+
+.ui-depth-card-content {
+  transform: translateZ(5px);
+  transition: transform 350ms cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+
+.ui-depth-card-ornament {
+  translate: 0 0 4px;
+}
+
+.hero-profile-depth {
+  perspective: 1300px;
+  transform-style: preserve-3d;
+  animation: profile-float 9s ease-in-out infinite;
+  transition: transform 500ms ease, box-shadow 500ms ease;
+  will-change: translate;
+}
+
+.hero-profile-texture {
+  transform: translateZ(-8px) scale(1.03);
+}
+
+.hero-profile-content {
+  transform: translateZ(8px);
+  transform-style: preserve-3d;
+  transition: transform 500ms ease;
+}
+
+.hero-seal-depth {
+  transform-style: preserve-3d;
+  filter: drop-shadow(0 9px 12px rgba(0, 0, 0, 0.24));
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .ui-depth-card:hover,
+  .ui-depth-card:focus-within {
+    transform: perspective(1000px) rotateX(2deg) rotateY(-1.5deg) translateY(-5px) translateZ(10px);
+    box-shadow: 0 24px 50px rgba(0, 0, 0, 0.3), 0 0 24px rgba(236, 208, 141, 0.08);
+  }
+
+  .ui-depth-card:hover .ui-depth-card-content,
+  .ui-depth-card:focus-within .ui-depth-card-content {
+    transform: translateZ(14px);
+  }
+
+  .hero-profile-depth:hover {
+    transform: perspective(1300px) rotateX(1deg) rotateY(-2deg) translateZ(10px);
+    box-shadow: 0 38px 100px rgba(0, 0, 0, 0.36), 0 0 34px rgba(236, 208, 141, 0.1);
+  }
+
+  .hero-profile-depth:hover .hero-profile-content {
+    transform: translateZ(16px);
+  }
+}
+
+@keyframes profile-float {
+  0%,
+  100% {
+    translate: 0 0;
+  }
+  50% {
+    translate: 0 -6px;
+  }
+}
+
+.ambient-particle-field {
+  mask-image: linear-gradient(to bottom, transparent, black 12%, black 88%, transparent);
+}
+
+@keyframes haze-drift {
+  from {
+    background-position: 0% 0%;
+  }
+  to {
+    background-position: 100% 100%;
+  }
+}
+
+@keyframes paper-drift {
+  from {
+    translate: 0 0 -100px;
+  }
+  to {
+    translate: 10px -8px -100px;
+  }
+}
+
+@keyframes glow-drift {
+  from {
+    translate: -8px 4px 52px;
+    opacity: 0.58;
+  }
+  to {
+    translate: 18px -12px 52px;
+    opacity: 0.82;
+  }
+}
+
+@keyframes glow-drift-reverse {
+  from {
+    translate: 12px -6px 38px;
+    opacity: 0.52;
+  }
+  to {
+    translate: -16px 12px 38px;
+    opacity: 0.76;
+  }
+}
+
+@keyframes glow-drift-slow {
+  from {
+    translate: 10px 8px 44px;
+    opacity: 0.5;
+  }
+  to {
+    translate: -14px -10px 44px;
+    opacity: 0.72;
+  }
+}
+
+@keyframes pattern-drift {
+  from {
+    translate: -8px 0;
+  }
+  to {
+    translate: 12px -8px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  .ambient-haze,
+  .ambient-atmosphere-depth,
+  .ambient-paper-drift,
+  .ambient-glow-drift,
+  .ambient-glow-drift-reverse,
+  .ambient-glow-drift-slow,
+  .ambient-pattern-drift {
+    animation: none !important;
+    will-change: auto;
+  }
+
+  .hero-profile-depth {
+    animation: none !important;
+    will-change: auto;
+  }
+
+  .ui-depth-card,
+  .ui-depth-card-content,
+  .hero-profile-depth {
+    transition: none !important;
+    transform: none;
+  }
+}
